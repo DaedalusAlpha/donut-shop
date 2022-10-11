@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CartItem, Donut, DonutDetail, Result } from '../models/donut';
+import { CartItem, Donut, DonutDetail } from '../models/donut';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,6 @@ import { CartItem, Donut, DonutDetail, Result } from '../models/donut';
 export class DonutService {
   private apiURL: string = 'https://grandcircusco.github.io/demo-apis/donuts';
   private donutCart: CartItem[] = [];
-  private numberOfDonuts: number = 0;
 
   constructor(private httpClient: HttpClient) {}
 
