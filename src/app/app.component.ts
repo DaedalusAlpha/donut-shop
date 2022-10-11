@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DonutDetail } from './models/donut';
+import { CartItem } from './models/donut';
 import { DonutService } from './services/donut.service';
 
 @Component({
@@ -11,18 +10,15 @@ import { DonutService } from './services/donut.service';
 export class AppComponent implements OnInit {
   title = 'donut-shop';
 
-  constructor(
-    private route: ActivatedRoute,
-    private donutService: DonutService
-  ) {}
+  constructor(private donutService: DonutService) {}
 
-  cart: DonutDetail[] = [];
+  cart: CartItem[] = [];
 
   ngOnInit(): void {
     this.cart = this.donutService.getCart();
   }
 
-  getCartSize(): number {
-    return this.cart.length;
+  getTotalCartQuantity(): number {
+    return this.donutService.getCartTotals(this.cart)[0];
   }
 }

@@ -1,14 +1,33 @@
 <h1>Shopping Cart</h1>
-<table>
-  <th style="text-align: center">Donut</th>
-  <th>Calories</th>
-  <th>Price</th>
-  <tr *ngFor="let d of cartContents">
-    <td>{{ d.name }}</td>
-    <td>{{ d.calories }}</td>
-    <td>{{ 1 | currency }}</td>
-    <td><button (click)="removeFromCart(d)">Remove</button></td>
-  </tr>
-</table>
-<p>Total Calories: {{ getTotalCalories() }}</p>
-<p>Total Price: {{ cartContents.length | currency }}</p>
+<div *ngIf="cart.length > 0">
+  <table>
+    <th style="text-align: center">Donut</th>
+    <th>Quantity</th>
+    <th>Calories</th>
+    <th>Price</th>
+    <th>Extended</th>
+    <tr *ngFor="let d of cart">
+      <td>{{ d.donut.name }}</td>
+      <td class="value">{{ d.quantity }}</td>
+      <td class="value">{{ d.donut.calories * d.quantity }}</td>
+      <td class="money">{{ 1 | currency }}</td>
+      <td class="money">{{ 1 * d.quantity | currency }}</td>
+      <td>
+        <button (click)="addOneMore(d.donut)" class="modifyAmount">+</button>
+      </td>
+      <td>
+        <button (click)="removeOneFromCart(d)" class="modifyAmount">-</button>
+      </td>
+      <td>
+        <button (click)="removeAllFromCart(d)" style="margin-left: 10px">
+          Remove All
+        </button>
+      </td>
+    </tr>
+  </table>
+  <h3>Total Calories: {{ getCartTotals()[1] }}</h3>
+  <h3>Total Price: {{ getCartTotals()[0] | currency }}</h3>
+</div>
+<div *ngIf="cart.length == 0">
+  <h3>Your shopping cart is empty.</h3>
+</div>

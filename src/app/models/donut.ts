@@ -21,3 +21,8 @@ export interface DonutDetail {
   photo: string;
   photo_attribution: string;
 }
+
+export interface CartItem {
+  donut: DonutDetail;
+  quantity: number;
+}

@@ -5,7 +5,8 @@
         <a routerLink="donuts">Donuts</a>
       </li>
       <li class="navigation">
-        <a routerLink="cart">Shopping Cart</a><span>({{ getCartSize() }})</span>
+        <a routerLink="cart">Shopping Cart</a
+        ><span>[{{ getTotalCartQuantity() }}]</span>
       </li>
     </ul>
   </nav>

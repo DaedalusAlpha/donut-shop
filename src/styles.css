@@ -1,3 +1,15 @@
 img {
     width: 300px
 }
+
+.money {
+    text-align: right;
+}
+
+.value {
+    text-align: center;
+}
+
+.modifyAmount {
+    width: 20px;
+}

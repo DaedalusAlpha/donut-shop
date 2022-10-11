@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DonutDetail } from 'src/app/models/donut';
+import { CartItem, DonutDetail } from 'src/app/models/donut';
 import { DonutService } from 'src/app/services/donut.service';
 
 @Component({
@@ -9,26 +8,27 @@ import { DonutService } from 'src/app/services/donut.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cartContents: DonutDetail[] = [];
+  cart: CartItem[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private donutService: DonutService
-  ) {}
+  constructor(private donutService: DonutService) {}
 
   ngOnInit(): void {
-    this.cartContents = this.donutService.getCart();
+    this.cart = this.donutService.getCart();
   }
 
-  removeFromCart(donut: DonutDetail): void {
-    this.donutService.removeFromCart(donut);
+  removeOneFromCart(donut: CartItem): void {
+    this.donutService.removeOneFromCart(donut);
   }
 
-  getTotalCalories(): number {
-    let sum: number = 0;
-    this.cartContents.forEach((d) => {
-      sum += d.calories;
-    });
-    return sum;
+  removeAllFromCart(donut: CartItem): void {
+    this.donutService.removeAllFromCart(donut);
+  }
+
+  getCartTotals(): number[] {
+    return this.donutService.getCartTotals(this.cart);
+  }
+
+  addOneMore(donut: DonutDetail): void {
+    this.donutService.addToCart(donut);
   }
 }
