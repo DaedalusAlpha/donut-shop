@@ -1,0 +1,24 @@
+<div>
+  <h1 style="display: inline-block; margin-right: 25px">Donut</h1>
+  <button
+    style="display: inline-block; vertical-align: middle; margin-bottom: 15px"
+    (click)="addToCart()"
+  >
+    Add to Cart
+  </button>
+</div>
+<p>Name: {{ displayDonut.name }}</p>
+<p>Calories: {{ displayDonut.calories }}</p>
+<ng-container *ngIf="displayDonut.extras">
+  <p *ngIf="displayDonut.extras.length">Extras:</p>
+  <ul>
+    <li *ngFor="let e of displayDonut.extras">{{ e }}</li>
+  </ul>
+</ng-container>
+<img [src]="displayDonut.photo" />
+<p>
+  Photo attribution:
+  <a href="{{ displayDonut.photo_attribution }}">{{
+    displayDonut.photo_attribution
+  }}</a>
+</p>

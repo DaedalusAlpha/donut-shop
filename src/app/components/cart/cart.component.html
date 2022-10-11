@@ -1,0 +1,14 @@
+<h1>Shopping Cart</h1>
+<table>
+  <th style="text-align: center">Donut</th>
+  <th>Calories</th>
+  <th>Price</th>
+  <tr *ngFor="let d of cartContents">
+    <td>{{ d.name }}</td>
+    <td>{{ d.calories }}</td>
+    <td>{{ 1 | currency }}</td>
+    <td><button (click)="removeFromCart(d)">Remove</button></td>
+  </tr>
+</table>
+<p>Total Calories: {{ getTotalCalories() }}</p>
+<p>Total Price: {{ cartContents.length | currency }}</p>
