@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
     return this.donutService.getCartTotals(this.cart);
   }
 
-  addOneMore(donut: DonutDetail): void {
+  addOneToCart(donut: DonutDetail): void {
     this.donutService.addToCart(donut);
   }
 }

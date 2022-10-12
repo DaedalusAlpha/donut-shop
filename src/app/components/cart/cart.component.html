@@ -11,9 +11,9 @@
       <td class="value">{{ d.quantity }}</td>
       <td class="value">{{ d.donut.calories * d.quantity }}</td>
       <td class="money">{{ 1 | currency }}</td>
-      <td class="money">{{ 1 * d.quantity | currency }}</td>
+      <td class="money">{{ d.quantity | currency }}</td>
       <td>
-        <button (click)="addOneMore(d.donut)" class="modifyAmount">+</button>
+        <button (click)="addOneToCart(d.donut)" class="modifyAmount">+</button>
       </td>
       <td>
         <button (click)="removeOneFromCart(d)" class="modifyAmount">-</button>

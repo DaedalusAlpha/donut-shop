@@ -54,7 +54,7 @@ export class DonutService {
     }
   }
 
-  //Find a donut in the cart by its id.
+  //Find a donut in the cart.
   findDonut(donut: DonutDetail): number {
     return this.donutCart.findIndex((d) => d.donut.id == donut.id);
   }
